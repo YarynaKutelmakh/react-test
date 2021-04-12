@@ -1,0 +1,21 @@
+.select-container {
+    display: block;
+    margin-bottom: 2%;
+    text-align: center;
+}
+.select {
+    margin: 0.5%;
+    padding: 1px;
+    border: 1px solid #ccc;
+    font-size: 15px;
+    padding: 2px;
+    font-family: 'Nunito Sans', sans-serif;
+}
+.filterBtn {
+    background-color:inherit;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    font-size: 15px;
+    padding: 3px 9px;
+    font-family: 'Nunito Sans', sans-serif;
+}

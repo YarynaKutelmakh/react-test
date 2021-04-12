@@ -1,0 +1,57 @@
+body {
+    background-color: rgb(255, 255, 255);
+    font-family: 'Nunito Sans', sans-serif;
+}
+.card {
+    background-color: rgb(231, 231, 231);
+    display: grid;
+    grid-template-columns: 40% 60%;
+    border-radius: 10px;
+    padding-right: 3%;
+    color: #000;
+    box-shadow: -1px -1px 34px 0px rgba(135,124,124,0.79);
+}
+
+.character-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3%;
+    margin: 0 10% 0 10%;
+}
+
+h2 {
+    font-weight: 900;
+    font-size: 30px;
+    margin-bottom: 0;
+}
+.status {
+    margin: 0;
+    font-weight: 700;
+}
+img {
+    border-radius: 10px;
+    width: 90%;
+    height: 100%;
+}
+.pageNumbers {
+    list-style: none;
+    display: flex;
+    color: rgb(89, 90, 95);
+    margin: 15% 45% 5%;
+}
+.pageNumbers li {
+    padding: 10px;
+    border: 1px solid rgb(89, 90, 95);
+    cursor: pointer;
+    border-radius: 7px;
+    margin: 2%;
+    transition: all 1s;
+}
+.pageNumbers li:hover {
+    color: #000;
+    border: 1px solid #000;
+    transform: scale(1.06);
+}
+.pageNumbers li:active {
+    transform: scale(0.9);
+}
