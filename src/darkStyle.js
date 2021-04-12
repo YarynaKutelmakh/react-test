@@ -30,5 +30,14 @@ body {
 .filterBtn{
     color: #ccc;
 }
+.text {
+    color: #ccc;
+}
+.btnNewPost {
+    color: #fff;
+}
+.inputGender {
+    color: #fff;
+}
 `
 export default darkStyle

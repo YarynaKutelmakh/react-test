@@ -1,9 +1,8 @@
 import React from 'react';
 import CharacterList from './components/CharacterList';
-import OwnCharacters from './components/OwnCharacters';
+import AddPost from './components/AddPost';
 import { HashRouter as Router, Switch, Route, NavLink } from "react-router-dom";
 import PersonalPage from './components/PersonalPage';
-import FilterCharacters from './components/FilterCharacters';
 import './App.css';
 
 function App() {
@@ -11,8 +10,9 @@ function App() {
     <div className="App">
       <Router>
         <div className='nav'>
+
           <NavLink to='/' className='links' activeClassName='active-nav'>Characters</NavLink>
-          <NavLink to='/addOwnCharacters' className='links' activeClassName='active-nav'>Add own characters</NavLink>
+          <NavLink to='/addPost' className='links' activeClassName='active-nav'>Add own characters</NavLink>
           <button className='btnLight' onClick={() => {
             window.localStorage.setItem('theme', 'light');
             window.location.reload();
@@ -21,11 +21,13 @@ function App() {
             window.localStorage.setItem('theme', 'dark');
             window.location.reload();
           }}>Dark</button>
+
+
         </div>
       </Router>
       <Switch>
         <Route exact path='/' component={CharacterList} />
-        <Route path='/addOwnCharacters' component={OwnCharacters} />
+        <Route path='/addPost' component={AddPost} />
         <Route path='/character/:id' component={PersonalPage} />
       </Switch>
     </div>

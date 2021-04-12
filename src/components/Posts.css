@@ -1,0 +1,27 @@
+.OwnCharacters {
+    margin-left: 30%;
+    padding: 1%;
+    text-align: center;
+    width: 40%;
+    box-shadow: 2px 4px 19px -3px rgba(34, 60, 80, 0.2);
+}
+input {
+    text-align: center;
+    margin: 1%;
+    padding: 1px;
+    border: 1px solid #ccc;
+    font-size: 15px;
+    padding: 2px;
+    font-family: 'Nunito Sans', sans-serif;
+} 
+.btnNewPost {
+    background-color:inherit;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    font-size: 15px;
+    padding: 3px 9px;
+    font-family: 'Nunito Sans', sans-serif;
+}
+img {
+    width: 60%;
+}

@@ -4,36 +4,46 @@ import './PersonalPage.css'
 
 export default function PersonalPage(props) {
 
-    const [AboutPerson, GetAboutPerson] = useState({});
-    const [Episodes, GetEpisodes] = useState([]);
+    const [aboutPerson, setAboutPerson] = useState({});
+    const [episodes, setEpisodes] = useState([]);
 
     const { id } = props.match.params;
 
     useEffect(() => {
         axios.get(`https://rickandmortyapi.com/api/character/${id}`)
-            .then(response => GetAboutPerson(response.data))
-    }, [])
+            .then(response => setAboutPerson(response.data))
+    }, [id])
 
     useEffect(() => {
-        if (AboutPerson.episode) {
-            const arr = AboutPerson.episode.map((item) => {
+        if (aboutPerson.episode) {
+            async function fetchEpisode(arr) {
+                const episodes = await axios.all(arr).then(axios.spread((...responses) => {
+                    console.log(responses);
+                    return responses.map(item => {
+                        return { name: item.data.name, episode: item.data.episode }
+                    })
+                })).catch((_) => console.log('ERROR'))
+                setEpisodes(episodes)
+            }
+            const arr = aboutPerson.episode.map((item) => {
                 return (
                     axios.get(item)
                 )
             })
-            axios.all(arr).then(axios.spread((...responses) => {
-                responses.map(item => GetEpisodes(item.data.episode))
-            })).catch(errors => console.log('ERROR'))
+            fetchEpisode(arr)
         }
-    }, [AboutPerson])
+    }, [aboutPerson])
+
 
     return (
         <div className='personalPage'>
-            <img src={AboutPerson.image} className='personImg' />
-            <h2>Name: {AboutPerson.name}</h2>
-            <p>Status: {AboutPerson.status} </p>
-            <p>Species: {AboutPerson.species}</p>
-            <p>Episode: {Episodes}</p>
+            <img src={aboutPerson.image} className='personImg' />
+            <h2>Name: {aboutPerson.name}</h2>
+            <p>Status: {aboutPerson.status} </p>
+            <p>Species: {aboutPerson.species}</p>
+            <p> {episodes.map(item => {
+                return <>Name: {item.name} <br /> Episode: {item.episode}<br /> </>
+            })}</p>
         </div>
     )
 }

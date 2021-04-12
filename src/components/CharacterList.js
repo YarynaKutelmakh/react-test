@@ -1,27 +1,29 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+
 import CharacterCard from './CharacterCard';
 import FilterCharacters from './FilterCharacters';
+
 import './Character.css';
 
 export default function CharacterList() {
-    const [CharacterList, GetCharacterList] = useState([]);
+    const [characterList, setCharacterList] = useState([]);
 
-    const [currentPage, setcurrentPage] = useState(1);
-    const [itemsPerPage] = useState(12);
+    const [currentPage, setCurrentPage] = useState(1);
+    const itemsPerPage = 12;
 
     const handleClick = (e) => {
-        setcurrentPage(Number(e.target.id));
+        setCurrentPage(Number(e.target.id));
     }
 
     const pages = [];
-    for (let i = 1; i <= Math.ceil(CharacterList.length / itemsPerPage); i++) {
+    for (let i = 1; i <= Math.ceil(40/12); i++) {
         pages.push(i);
     }
 
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-    const currentItems = CharacterList.slice(indexOfFirstItem, indexOfLastItem);
+    const currentItems = characterList;
 
     const renderPageNumbers = pages.map(number => {
         return (
@@ -31,10 +33,10 @@ export default function CharacterList() {
         )
     })
 
-    const renderList = (CharacterList) => {
+    const renderList = (characterList) => {
         return (
             <div className="character-list">
-                {CharacterList.map((props, id) => {
+                {characterList.map((props, id) => {
                     return <CharacterCard key={id}  {...props} />;
                 })}
             </div>
@@ -42,12 +44,13 @@ export default function CharacterList() {
     };
 
     useEffect(() => {
-        axios.get("https://rickandmortyapi.com/api/character/")
-            .then(response => GetCharacterList(response.data.results))
-    }, []);
+        axios.get(`https://rickandmortyapi.com/api/character/[${Array(12).fill(0).map((e,i)=>i+indexOfFirstItem + 1).join(',')}]`)
+            .then(response => setCharacterList(response.data))
+            .catch((_) => console.log('ERROR'))
+    }, [indexOfFirstItem]);
 
     const setFilterChars = (arr) => {
-        GetCharacterList(arr)
+        setCharacterList(arr)
     }
 
     return (
