@@ -27,7 +27,10 @@ function AddPost() {
 
         dispatch(createPost(newPost));
 
-
+        setImgLink('');
+        setName('');
+        setEmail('');
+        setGender('');
     }
 
     return (

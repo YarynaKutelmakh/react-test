@@ -17,13 +17,13 @@ export default function CharacterList() {
     }
 
     const pages = [];
-    for (let i = 1; i <= Math.ceil(40/12); i++) {
+    for (let i = 1; i <=Math.ceil(characterList.length / itemsPerPage); i++) {
         pages.push(i);
     }
 
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-    const currentItems = characterList;
+    const currentItems = characterList.slice(indexOfFirstItem, indexOfLastItem);
 
     const renderPageNumbers = pages.map(number => {
         return (
@@ -44,10 +44,10 @@ export default function CharacterList() {
     };
 
     useEffect(() => {
-        axios.get(`https://rickandmortyapi.com/api/character/[${Array(12).fill(0).map((e,i)=>i+indexOfFirstItem + 1).join(',')}]`)
-            .then(response => setCharacterList(response.data))
+        axios.get(`https://rickandmortyapi.com/api/character/`)
+            .then(response => setCharacterList(response.data.results))
             .catch((_) => console.log('ERROR'))
-    }, [indexOfFirstItem]);
+    }, []);
 
     const setFilterChars = (arr) => {
         setCharacterList(arr)
