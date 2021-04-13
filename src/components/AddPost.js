@@ -1,12 +1,11 @@
 import React, { useState, useRef } from 'react';
-import { connect, useSelector, useDispatch } from 'react-redux';
+import { connect, useDispatch } from 'react-redux';
 import { createPost } from './store/actions';
 import Publications from './Publications';
 
 import './Posts.css';
 
 function AddPost() {
-    const posts = useSelector((state) => state.posts);
     const dispatch = useDispatch();
     const formRef = useRef(null);
 

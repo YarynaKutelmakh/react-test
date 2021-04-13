@@ -18,7 +18,6 @@ export default function PersonalPage(props) {
         if (aboutPerson.episode) {
             async function fetchEpisode(arr) {
                 const episodes = await axios.all(arr).then(axios.spread((...responses) => {
-                    console.log(responses);
                     return responses.map(item => {
                         return { name: item.data.name, episode: item.data.episode }
                     })
@@ -34,16 +33,16 @@ export default function PersonalPage(props) {
         }
     }, [aboutPerson])
 
-
     return (
         <div className='personalPage'>
-            <img src={aboutPerson.image} className='personImg' />
-            <h2>Name: {aboutPerson.name}</h2>
-            <p>Status: {aboutPerson.status} </p>
-            <p>Species: {aboutPerson.species}</p>
-            <p> {episodes.map(item => {
-                return <>Name: {item.name} <br /> Episode: {item.episode}<br /> </>
-            })}</p>
+            <img alr='post' src={aboutPerson.image} className='personImg' />
+            <h2 className='personalName'>Name: {aboutPerson.name}</h2>
+            <p className='personalText'><b>Status:</b> {aboutPerson.status}</p>
+            <p className='personalText'><b>Species:</b> {aboutPerson.species}</p>
+            {episodes.map((item, id) => {
+                return <p className='listOfEpisodes' key={id}><span className='name'><b>Name:</b> {item.name}</span>
+                    <span className='episode'><b>Episode:</b> {item.episode}</span><br /></p>
+            })}
         </div>
     )
 }

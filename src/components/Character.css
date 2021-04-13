@@ -10,8 +10,11 @@ body {
     padding-right: 3%;
     color: #000;
     box-shadow: -1px -1px 34px 0px rgba(135,124,124,0.79);
+    cursor: pointer;
 }
-
+.card:hover {
+    transform: scale(1.01);
+}
 .character-list {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -37,7 +40,7 @@ img {
     list-style: none;
     display: flex;
     color: rgb(89, 90, 95);
-    margin: 15% 42% 5%;
+    margin: 15% 48% 5%;
 }
 .pageNumbers li {
     padding: 10px;
@@ -45,7 +48,7 @@ img {
     cursor: pointer;
     border-radius: 7px;
     margin: 2%;
-    transition: all 1s;
+    transition: all 0.5s;
 }
 .pageNumbers li:hover {
     color: #000;
@@ -54,4 +57,24 @@ img {
 }
 .pageNumbers li:active {
     transform: scale(0.9);
+}
+
+@media (max-width: 1088px) {
+    .pageNumbers {
+        margin-top: 27%;
+        margin-left: 47%;
+    }
+}
+@media (max-width: 900px) {
+    .pageNumbers {
+        margin-top: 37%;
+    }
+}
+@media (max-width: 650px) {
+    .character-list {
+        grid-template-columns: 1fr;
+    }
+    .pageNumbers {
+        margin-top: 136%;
+    }
 }

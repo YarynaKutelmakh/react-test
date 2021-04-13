@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import darkStyle from '../darkStyle'
+import darkStyle from '../darkStyle';
 
 export default props => {
 

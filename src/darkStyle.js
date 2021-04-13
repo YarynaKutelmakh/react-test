@@ -21,6 +21,9 @@ body {
     border: 1px solid #fff;
     transform: scale(1.06);
 }
+.pageNumbers li:active {
+    transform: scale(0.9);
+}
 .btnLight:hover,
 .btnDark:hover {
     color: #000;
@@ -38,6 +41,12 @@ body {
 }
 .inputGender {
     color: #fff;
+}
+.personalName,
+.personalText,
+.name,
+.episode {
+    color: #ccc;
 }
 `
 export default darkStyle

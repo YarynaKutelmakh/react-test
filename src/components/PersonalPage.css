@@ -2,5 +2,18 @@
     text-align: center;
 }
 .personImg{
-    width: 30%;
+    width: 40%;
+}
+.listOfEpisodes {
+    display: grid;
+    grid-template-columns: 30% 30%;
+    align-items: center;
+    text-align: start;
+    margin-left: 36%;
+}
+@media (max-width: 1088px) {
+    .listOfEpisodes {
+        grid-template-columns: 34% 34%;
+        margin-left: 31%;
+    }
 }

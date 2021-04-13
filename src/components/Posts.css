@@ -22,6 +22,14 @@ input {
     padding: 3px 9px;
     font-family: 'Nunito Sans', sans-serif;
 }
-img {
-    width: 60%;
+.postsImg {
+    width: 70%;
+}
+
+
+@media (max-width: 650px) {
+    .OwnCharacters {
+        margin-left: 16%;
+        width: 65%;
+    }
 }

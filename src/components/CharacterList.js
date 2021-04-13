@@ -59,9 +59,9 @@ export default function CharacterList() {
                 <FilterCharacters setFilterChars={setFilterChars} />
                 {renderList(currentItems)}
             </div>
-            <ul className='pageNumbers'>
+            <div className='pageNumbers'>
                 {renderPageNumbers}
-            </ul>
+            </div>
         </div>
     )
 

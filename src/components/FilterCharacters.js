@@ -56,13 +56,13 @@ export default function FilterCharacters({setFilterChars}) {
   return (
     <div className="select-container">
       <select value={gender} onChange={genderChange} className='select'>
-        {gerders.map((option) => (
-          <option value={option.value}>{option.label}</option>
+        {gerders.map((option, item) => (
+          <option value={option.value} key={item}>{option.label}</option>
         ))}
       </select>
       <select value={status} onChange={statusChange}className='select'>
-        {statuses.map((option) => (
-          <option value={option.value}>{option.label}</option>
+        {statuses.map((option, item) => (
+          <option value={option.value} key={item}>{option.label}</option>
         ))}
       </select>
       <button onClick={filterCharacters} className='filterBtn'>Filter</button>
